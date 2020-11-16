@@ -22,7 +22,7 @@ for j in range(1,21):
 
 
     with open(".\\supplierLists\\supplierlist1.csv",
-              "r") as f:
+              "r", encoding="utf8") as f:
         supplierList = csv.DictReader(f)
         matchRow = []
         i = 0
@@ -46,7 +46,7 @@ for j in range(1,21):
 
     if matchRow == []:
         with open(".\\supplierLists\\supplierlist2.csv",
-              "r") as f:
+              "r", encoding="utf8") as f:
             supplierList = csv.DictReader(f)
             matchRow = []
             i = 0
@@ -69,7 +69,7 @@ for j in range(1,21):
             f.close()
     if matchRow == []:
         with open(".\\supplierLists\\supplierlist1.csv",
-              "r") as f:
+              "r", encoding="utf8") as f:
             supplierList = csv.DictReader(f)
             matchRow = []
             i = 0
@@ -92,7 +92,7 @@ for j in range(1,21):
 
     if not matchRow:
         with open(".\\supplierLists\\supplierlist2.csv",
-              "r") as f:
+              "r", encoding="utf8") as f:
             supplierList = csv.DictReader(f)
             matchRow = []
             i = 0
@@ -112,5 +112,8 @@ for j in range(1,21):
                         if number_of_tokens == 0:
                             break
             f.close()
-    print("Done Running File " + str(j) + ". \n\t Found at row: " + str(i + 1) + " in supplierlist" +
-          str(found_in) + ".csv" + "\n\t Supplier Name: " + matchRow["Business Name"] + "\n\t SIC4: " + matchRow["SIC4 Category"] + "\n\t SIC8: " + matchRow["SIC8 Category"])
+            
+    print(("Done Running File " + str(j) + ". \n\t Found at row: " + str(i + 1) + " in supplierlist" +
+          str(found_in) + ".csv" + "\n\t Supplier Name: " + matchRow["Business Name"] + "\n\t SIC4: " + matchRow["SIC4 Category"] + "\n\t SIC8: " + matchRow["SIC8 Category"]).replace('\ufffd', ''))
+    # print("Done Running File " + str(j) + ". \n\t Found at row: " + str(i + 1) + " in supplierlist" +
+    #       str(found_in) + ".csv" + "\n\t Supplier Name: " + matchRow["Business Name"] + "\n\t SIC4: " + matchRow["SIC4 Category"] + "\n\t SIC8: " + matchRow["SIC8 Category"].replace())
